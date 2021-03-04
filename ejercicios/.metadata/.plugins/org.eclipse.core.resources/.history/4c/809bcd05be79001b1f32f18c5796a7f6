@@ -1,0 +1,15 @@
+package claseFile;
+
+public class formateandoConPrintf {
+
+	public static void main(String[]args) {
+		
+		
+		System.out.println("Hola que tal");
+		
+		
+	}
+	
+	
+	
+}

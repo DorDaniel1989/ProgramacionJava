@@ -1,0 +1,25 @@
+package claseFile;
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
+public class ejercicio3 {
+	
+    public static void main(String[]args) {
+	
+	
+}
+    
+    public static boolean contieneIrun(String cadena) {
+    	boolean contiene=false;
+    	     if(cadena.contains("Irun")) {
+    	    	 contiene =true;
+    	    	 return contiene ;}
+    	     else {
+    	    	 contiene=false;
+    	    	 return contiene;
+    	     }
+    	
+    }
+    
+}

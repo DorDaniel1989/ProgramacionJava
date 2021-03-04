@@ -1,0 +1,24 @@
+package ProyectoEmpresa;
+
+
+
+public class App {
+
+      public static void main(String[]args) {
+    	  
+    	  
+    	  
+    	 Cliente pedro=new Cliente(1,"Pedro","Sanz", 654760367);
+    	 
+    	 String nom=pedro.nombre;
+    	 System.out.println(nom);  
+    	 System.out.println(pedro.telefono);
+    	 System.out.println(pedro.id);
+    	 System.out.println(pedro.apellido);
+    	
+    	
+    	
+    	
+      }
+	
+}

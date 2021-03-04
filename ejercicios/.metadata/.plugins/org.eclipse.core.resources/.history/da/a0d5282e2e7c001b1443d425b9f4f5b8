@@ -1,0 +1,31 @@
+package ProyectoEmpresa;
+
+public class Cliente {
+
+	static String nombre;
+	 static String apellido;
+ int id;
+	static int telefono;
+	
+	
+	public  Cliente(int id, String nombre, String apellido,  int telefono) {
+		this.id=id;
+		this.telefono=telefono;
+		this.nombre=nombre;
+		this.apellido=apellido;
+		
+	}
+	
+	
+	
+	public static void ConsultaCliente(int id) {
+		String info="Nombre:  "+nombre+"\nApellido"+ apellido+"\nTelefono : "+telefono;
+			
+	}
+	
+	
+	public static void ModificarCliente() {
+		
+	}
+	
+}

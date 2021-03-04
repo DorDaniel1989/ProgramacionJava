@@ -1,0 +1,45 @@
+package claseFile;
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
+public class ejercicio3 {
+	
+    public static void main(String[]args) {
+	
+    	FileReader fr=null;
+		String ruta ="C:/PruebasFile/datos.txt";
+        boolean contiene;
+		try {
+			fr =new FileReader(ruta);
+			@SuppressWarnings("resource")
+			BufferedReader entrada =new BufferedReader(fr);
+			String cadena =entrada.readLine();
+		    contiene=contieneIrun(cadena);
+		   System.out.println(contiene);
+		    
+		    
+		}
+		
+	     catch(IOException e) {
+	    	 System.out.println("Error por algun lado");
+	     }
+	   
+		
+		
+		
+}
+    
+    public static boolean contieneIrun(String cadena) {
+    	boolean contiene=false;
+    	     if(cadena.contains("Irun")) {
+    	    	 contiene =true;
+    	    	 return contiene ;}
+    	     else {
+    	    	 contiene=false;
+    	    	 return contiene;
+    	     }
+    	
+    }
+    
+}

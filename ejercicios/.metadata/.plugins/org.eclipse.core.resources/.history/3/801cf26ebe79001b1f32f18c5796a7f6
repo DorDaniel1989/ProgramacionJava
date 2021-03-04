@@ -1,0 +1,19 @@
+package claseFile;
+
+public class formateandoConPrintf {
+
+	public static void main(String[]args) {
+		
+		
+		System.out.printf("%-25s %-30s %d\n","Hola que tal","Muy bien y tu?" , 25);
+		System.out.printf("%-25s %-30s %d\n","Hola que ","Muy bien tu?" , 25);
+		System.out.printf("%-25s %-30s %d\n","Hola qu","Muy bien y ?" , 25);
+		System.out.printf("%-25s %-30s %d\n","Hola q","Muy y tu?" , 25);
+		
+		
+		
+	}
+	
+	
+	
+}

@@ -1,0 +1,98 @@
+package claseFile;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.PrintWriter;
+import java.io.IOException;
+import java.io.FileReader;
+
+
+public class ejercicio5Entrega {
+
+	@SuppressWarnings("resource")
+	public static void main(String[]args) throws IOException {
+		
+		
+		//Preparando los objetos de lectura y escritura
+	    PrintWriter salida =null;
+	    FileReader fr=null;
+		salida= new PrintWriter ("C:/PruebasFile/boletines.txt");
+	    String ruta ="C:/PruebasFile/operaciones.txt";
+		fr =new FileReader(ruta);
+		@SuppressWarnings("resource")
+		BufferedReader entrada =new BufferedReader(fr);
+		
+		String cadena =entrada.readLine();
+		
+		while(cadena!=null) {
+		
+		//System.out.println(cadena);
+		System.out.println(quitarEspacios(cadena));
+		cadena=quitarEspacios(cadena);
+		System.out.println(validarParentesis(cadena));
+	    boolean valido=validarParentesis(cadena);
+		if(valido) {
+			System.out.println("En principio es una operacion valida");
+		}
+		else
+			System.out.println("Operacion incorrecta");
+		
+		cadena=entrada.readLine();
+		}
+	}
+
+	
+	
+//limpieza	
+public static String quitarEspacios(String cadena) {
+	String nuevaCadena;
+	
+	nuevaCadena=cadena.replaceAll(" ", "");
+	
+	return nuevaCadena;
+	
+}
+//operaciones a realizar
+public static int sumar(int num1, int num2) {
+	
+	int resultado=num1+num2;
+	return resultado;
+}
+public static int restar(int num1, int num2) {
+	
+	int resultado=num1-num2;
+	return resultado;
+}
+public static int multiplicar(int num1, int num2) {
+	
+	int resultado=num1*num2;
+	return resultado;
+}
+public static int dividir(int num1, int num2) {
+	
+	int resultado=num1/num2;
+	return resultado;
+}
+//identificar operaciones
+
+public static boolean validarParentesis(String cadena) {
+	boolean valido=false;
+	int parentesisApertura=0;
+	int parentesisCierre=0;
+	
+	      for(int i=0;i<cadena.length();i++) {
+	    	  if(cadena.charAt(i)=='(' ) {
+	    		  parentesisApertura++;
+	    	  }
+	    	  if( cadena.charAt(i)==')'){
+	    		parentesisCierre++;
+	    	  }
+	       }
+	
+	      if(parentesisApertura==parentesisCierre)
+	    	  valido=true;
+	
+	return valido;
+}
+}

@@ -1,0 +1,30 @@
+package files;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.swing.JOptionPane;
+public class prueba_2 {
+
+public static void main(String[]args) {
+	
+	String frase;
+	String ruta="C:/prueba/prueba.txt";
+	try {
+    FileWritter fw =new FileWriter(ruta,true);
+	frase =JOptionPane.showInputDialog(null,"Introduce un texto");
+	while(!frase.equalsIgnoreCase("FIN")) {
+		salida.println(frase);
+		frase=JOptionPane.showInputDialog(null,"Introduce un texto");
+	}
+	
+	}catch (FileNotFoundException e) {
+	System.out.println(e.getMessage());
+	
+	}finally {
+		salida.close();
+	}
+}
+}

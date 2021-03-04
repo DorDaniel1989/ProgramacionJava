@@ -1,0 +1,19 @@
+1614278963541	Delete element
+1614279058921	Rename local variable 'salida'
+1614279072448	Rename local variable 'salida2'
+1614283158281	Delete element
+1614426423015	Move compilation unit
+1614426480466	Rename type 'ejercicio5Entrega'
+1614426497797	Rename type 'operacionesMatematicasConFicheros'
+1614426518355	Rename type 'ejercicio1conMetodos'
+1614429789231	Rename method 'recogerCurso'
+1614429815515	Rename method 'recogerNombre'
+1614429837670	Rename method 'recogerNotas'
+1614429881675	Rename method 'transformarNotas'
+1614429912646	Rename method 'pintarCabecera'
+1614429930220	Rename method 'pintarCiclo'
+1614429944243	Rename method 'pintarCalificaciones'
+1614456323884	Rename method 'printGionesSeparacion'
+1614456385702	Rename local variable 'ruta'
+1614457277406	Rename method 'tranducirNotas'
+1614457332203	Rename local variable 'notasTransformadas'

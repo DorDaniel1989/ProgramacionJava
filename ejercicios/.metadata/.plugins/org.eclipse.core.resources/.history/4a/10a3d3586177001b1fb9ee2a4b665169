@@ -1,0 +1,208 @@
+package claseFile;
+
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
+import java.text.DecimalFormat;
+import java.text.Normalizer;
+
+
+
+public class ejercicio1conMetodos {
+
+	public static void main(String []args) {
+		
+		 FileReader fr =null;
+	        String ruta = "C:/PruebasFile/notas.txt";
+		   
+	        PrintWriter salida =null;
+	        String  cadena="";
+	        String cadenaResul="";
+	        int restoCadena;
+	        int []notasEnteras=new int[6];
+	        boolean aprobado;
+	        double media;
+	        int numSuspensos;
+	        
+	        int numCaracteres;
+	        String blancos= "                   ";
+	      
+	         
+	        try {
+	        	fr =new FileReader(ruta);
+	            @SuppressWarnings("resource")
+				BufferedReader entrada= new BufferedReader(fr);
+                salida= new PrintWriter ("C:/PruebasFile/resultados.txt");
+              
+                cadena =entrada.readLine();
+               
+	               while(cadena!=null) {
+	                   cadena= limpiarCadena(cadena);
+	                   cadena=limpiarAcentos( cadena);
+	                   
+	                   cadenaResul= getInicialMasApellido(cadena);
+	                   numCaracteres= cadenaResul.length();
+	                   cadenaResul=cadenaResul+blancos.substring(numCaracteres, 19);
+	                   restoCadena= getIndice(cadena);
+	                   notasEnteras= getNotas(cadena,restoCadena);
+	                   aprobado=aprobado(notasEnteras);
+	                   media=obtenerMedia(notasEnteras);
+	                   numSuspensos= numeroSuspensos(notasEnteras);
+	            System.out.println(formarCadenaFinal( cadenaResul, aprobado, media, numSuspensos));
+	                   cadenaResul=formarCadenaFinal( cadenaResul, aprobado, media, numSuspensos);
+	                   salida.println(cadenaResul);
+	                   cadena =entrada.readLine();
+	        } 
+	            salida.flush();
+	            salida.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	         
+	}
+	
+	
+	public static String limpiarAcentos(String cadena) {
+	    String limpio =null;
+	    if (cadena !=null) {
+	        String valor = cadena;
+	        // Normalizar texto para eliminar acentos, dieresis, cedillas y tildes
+	        limpio = Normalizer.normalize(valor, Normalizer.Form.NFD);
+	        // Quitar caracteres no ASCII excepto la enie, interrogacion que abre, exclamacion que abre, grados, U con dieresis.
+	        limpio = limpio.replaceAll("[^\\p{ASCII}(N\u0303)(n\u0303)(\u00A1)(\u00BF)(\u00B0)(U\u0308)(u\u0308)]", "");
+	        // Regresar a la forma compuesta, para poder comparar la enie con la tabla de valores
+	       // limpio = Normalizer.normalize(limpio, Normalizer.Form.NFC);
+	    }
+	    return limpio;
+	}
+
+	public static String limpiarCadena(String cadena) {
+		
+		
+		
+		
+		cadena= cadena.replace(';', ' ');
+		return cadena;
+	}
+	
+	public static String getInicialMasApellido(String cadena) {
+		String nuevaCadena="";
+		
+		nuevaCadena=nuevaCadena+cadena.charAt(0);
+		nuevaCadena=nuevaCadena + ".";
+		  int i=1;
+          while(cadena.charAt(i)!=' ')
+             i++;
+          do {
+        	  nuevaCadena=nuevaCadena+cadena.charAt(i);
+      			i++;   
+          }while(cadena.charAt(i)!=' ');
+          
+		return nuevaCadena;
+				
+	}
+	
+	public static int getIndice(String cadena) {
+		 int i=1;
+		 String nuevaCadena="";
+         while(cadena.charAt(i)!=' ')
+            i++;
+         do {
+       	  nuevaCadena=nuevaCadena+cadena.charAt(i);
+     			i++;   
+         }while(cadena.charAt(i)!=' ');
+	
+         return i;
+	}
+
+	public static int[] getNotas(String cadena, int indice) {
+		 String[] notas = new String[6];
+         int []notasEnteras=new int[6];
+         int x=0;
+         
+         for(int j=indice ; j<cadena.length();j++) {
+        	 
+         	if(cadena.charAt(j)!=' ') {
+     		   notas[x]= String.valueOf(cadena.charAt(j));
+         	         x++;}
+         }	
+         //pasamos las notas de formato string a formato int
+         for(int i=0;i<notasEnteras.length;i++) {
+     	   notasEnteras[i]=Integer.parseInt(notas[i]);
+        }
+         
+         
+		return notasEnteras;
+	}
+	
+	public static boolean aprobado(int[] array) {
+		 boolean aprobado=true;
+		 for(int i=0;i<array.length;i++) {
+      	   if(array[i]<5) 
+      		   aprobado=false; }	 
+         return aprobado;
+ }
+	 
+	public static double obtenerMedia(int[] array) {
+		int suma=0; 
+		 for(int k=0;k<array.length;k++) {
+      	  
+          	suma=suma+array[k];
+         }
+       double media= (double)suma/6;
+      
+		 return media;
+	 }
+	 
+	public static int numeroSuspensos(int[] array) {
+		 int numSuspensos=0;
+		 
+		  for(int k=0;k<array.length;k++) {
+       	   if(array[k]<5) 
+       		   numSuspensos++;
+		  }
+       	   return numSuspensos;
+		 
+	 }
+	 
+	public static String formarCadenaFinal(String cadena, boolean aprobado, double media, int numSuspensos ){
+		 DecimalFormat df = new DecimalFormat("#.##");
+		 
+		 if (!aprobado) {
+       	  cadena=cadena+ "  "+ "SC";
+         }
+         else
+        	 cadena=cadena+ "  "+ (df.format(media)) ;
+        
+       if(!aprobado) {
+    	   cadena=cadena + "    " +numSuspensos+" suspensos";
+        }
+        else {
+         if(media<=5)
+        	 cadena=cadena + "  SUSPENSO";
+         if(media>5 && media<6)
+        	 cadena=cadena + "  SUFICIENTE";
+         if(media>=6&& media<7)
+        	 cadena=cadena + "  BIEN";
+         if(media>=7 && media<=8)
+        	 cadena=cadena + "  NOTABLE";
+         if(media>=8 && media<=10)
+        	 cadena=cadena + "  SOBRESALIENTE";
+        }
+		 
+		 return  cadena;
+	 }
+
+
+}
+	       
+	     
+	       
+	       
+		
+	
+	
+	
+	
+

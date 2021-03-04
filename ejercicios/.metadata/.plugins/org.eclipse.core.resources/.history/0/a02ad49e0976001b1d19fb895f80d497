@@ -1,0 +1,89 @@
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.PrintWriter;
+
+import javax.swing.JOptionPane;
+
+import java.io.FileNotFoundException;
+
+
+public class ejerciciosFile {
+
+	public  static void main (String[]args) throws IOException {
+		
+		    
+		    FileReader fr =null;
+	        String ruta = "C:/PruebasFile/notas.txt";
+		   
+	        
+	        
+	        fr =new FileReader(ruta);
+	        BufferedReader entrada= new BufferedReader(fr);
+            File fichero=new File("C:/PruebasFile/resultados.txt");
+	        
+            String  cadena =entrada.readLine();
+	
+            
+           
+            System.out.println(cadena.replace(';', ' '));
+            System.out.println(cadena);
+            /*	try {
+              
+				
+				   JOptionPane.showMessageDialog(null,cadena);
+				   int i=0;
+				   int suma = 0;
+				   String cadenaResul="";
+				 
+				   while(i <cadena.length()-1) {
+					   
+					   //Cogemos la primera letra y le añadimos un punto
+					  cadenaResul=cadenaResul+cadena.charAt(i);
+					  cadenaResul=cadenaResul+". ";
+					  
+					    //Obviamos el resto de letras del nombre
+					  while(cadena.charAt(i)!=' ') {
+						     i++;
+				    	    }	
+					     i++;
+					     
+					  if(cadena.charAt(i)!=' ') {
+						while (cadena.charAt(i) !=';') {
+							cadenaResul=cadenaResul+cadena.charAt(i);
+							i++;
+						}
+					}
+					System.out.println(cadenaResul);
+					//calculamos media
+					
+					while(cadena != null ) {
+					    if(cadena.charAt(i)==';') {
+						i++;
+				     	}
+						suma= suma+  Character.getNumericValue(cadena.charAt(i));
+						System.out.println(suma);
+						if((cadena.charAt(i+1))==';')
+						  i++;
+						if(cadena.charAt(i+1)==-1) {
+							break;
+						}
+					}
+					int media=suma/6;
+					System.out.println(cadenaResul);
+					cadenaResul = cadenaResul+ "       " + media;
+				    System.out.println(cadenaResul);
+				
+				    
+				    //cadena =entrada.readLine();
+			       }
+			
+			
+	
+			}catch(Exception e) {
+				System.out.println(e.getMessage());
+			}*/
+			
+}
+}

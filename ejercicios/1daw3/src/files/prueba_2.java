@@ -1,0 +1,27 @@
+package files;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.swing.JOptionPane;
+
+public class prueba_2 {
+
+public static void main(String[]args) {
+	
+	String frase;
+	String ruta="C:/prueba/prueba.txt";
+	try {
+          FileWriter fw =new FileWriter(ruta,true);
+          PrintWriter salida = new PrintWriter(fw);
+	      frase =JOptionPane.showInputDialog(null,"Introduce un texto");
+	      while(!frase.equalsIgnoreCase("FIN")) {
+		     salida.println(frase);
+		     frase=JOptionPane.showInputDialog(null,"Introduce un texto");
+	}
+	salida.flush();
+	}catch (IOException e) {
+	System.out.println(e.getMessage());
+	
+	}
+}
+}

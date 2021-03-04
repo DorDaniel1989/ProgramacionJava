@@ -1,0 +1,162 @@
+package trabajos_entregar;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.PrintWriter;
+import java.io.IOException;
+import java.io.FileReader;
+
+
+public class OperacionesMatematicasConFicheros {
+
+	@SuppressWarnings("resource")
+	public static void main(String[]args) throws IOException {
+		
+		
+		//Preparando los objetos de lectura y escritura
+	    PrintWriter salida =null;
+	    FileReader fr=null;
+		salida= new PrintWriter ("C:/PruebasFile/boletines.txt");
+	    String ruta ="C:/PruebasFile/operaciones.txt";
+		fr =new FileReader(ruta);
+		@SuppressWarnings("resource")
+		BufferedReader entrada =new BufferedReader(fr);
+		
+		String cadena =entrada.readLine();
+		   System.out.println(cadena);
+		cadena=quitarEspacios(cadena);
+			System.out.println(cadena);
+		
+	  
+		
+
+	    
+	    
+		  int PrimeraAparicion=cadena.indexOf('(');                              
+	      int UltimaAparicion=cadena.lastIndexOf(')');
+	  
+	      
+	    System.out.println(PrimeraAparicion);
+	    System.out.println(UltimaAparicion);
+	    
+	    
+	    String cadenaR=cadena.substring(1, 4);
+	    
+	    System.out.println(cadenaR);
+	    
+	    int resul=realizarOperacion(cadenaR);
+	    System.out.println(resul);
+	    
+	   
+	    
+		
+	}
+
+	
+	
+//limpieza	
+public static String quitarEspacios(String cadena) {
+	String nuevaCadena;
+	
+	nuevaCadena=cadena.replaceAll(" ", "");
+	
+	return nuevaCadena;
+	
+}
+//operaciones a realizar
+public static int sumar(int num1, int num2) {
+	
+	int resultado=num1+num2;
+	return resultado;
+}
+public static int restar(int num1, int num2) {
+	
+	int resultado=num1-num2;
+	return resultado;
+}
+public static int multiplicar(int num1, int num2) {
+	
+	int resultado=num1*num2;
+	return resultado;
+}
+public static int dividir(int num1, int num2) {
+	
+	int resultado=num1/num2;
+	return resultado;
+}
+//identificar operaciones
+
+public static boolean validarParentesis(String cadena) {
+	boolean valido=false;
+	int parentesisApertura=0;
+	int parentesisCierre=0;
+	String [] combinaciones= {"(",")",")+",")-",")*",")/","+(","-(","*(","/("};
+	
+	for(int i=0;i<cadena.length();i++) {
+		
+		
+	}
+	
+	
+	      for(int i=0;i<cadena.length();i++) {
+	    	  if(cadena.charAt(i)=='(' ) {
+	    		  parentesisApertura++;
+	    	  }
+	    	  if( cadena.charAt(i)==')'){
+	    		parentesisCierre++;
+	    	  }
+	       }
+	
+	      if(parentesisApertura==parentesisCierre)
+	    	  valido=true;
+	      else
+	    	  valido=false;
+	
+	return valido;
+}
+
+
+public static void identificarOperador(String cadena) {
+
+	
+	
+	
+}
+public static int realizarOperacion(String cadena) {
+		int resultado=0;
+		int i=0;
+		String num1S="";
+	    String num2S="";
+	    int num1=0;
+	    int num2=0;
+		while(i<cadena.length()){
+		    if (cadena.charAt(i)=='+') {
+		    	num1=Integer.parseInt(num1S);
+		        	while(i<cadena.length()){
+		        		num2S=num2S+cadena.charAt(i);
+		        		i++;
+		        	}
+		        	System.out.println(i);
+		        	num2=Integer.parseInt(num2S);	
+		    	//resultado=sumar(num1,num2);
+		        return num2;	
+		    }
+		    	
+		    
+		    if (cadena.charAt(i)=='-')
+		    	i++;
+		    if (cadena.charAt(i)=='*')
+		    	i++;
+		    if (cadena.charAt(i)=='/')
+		    	i++;
+		    
+		    
+		  num1S=num1S+(cadena.charAt(i));
+		  i++;  }
+		 
+		
+		return num1 ;
+	}
+
+}

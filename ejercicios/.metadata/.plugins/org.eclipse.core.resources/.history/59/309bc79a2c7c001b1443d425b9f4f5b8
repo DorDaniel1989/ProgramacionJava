@@ -1,0 +1,26 @@
+package ProyectoEmpresa;
+
+public class Cliente {
+
+	
+	
+	
+	private String nombre;
+	private String apellido;
+	
+	
+	public  void NuevoCliente(String nombre, String apellido) {
+		
+		this.nombre=nombre;
+		this.apellido=apellido;
+		
+	}
+	
+	public static void ConsultaCliente() {
+		
+	}
+	public static void ModificarCliente() {
+		
+	}
+	
+}

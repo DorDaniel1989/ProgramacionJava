@@ -1,0 +1,19 @@
+package ProyectoEmpresa;
+
+public class Cliente {
+
+	
+	
+	
+	public static NuevoCliente() {
+		
+	}
+	
+	public static ConsultaCliente() {
+		
+	}
+	public static ModificarCliente() {
+		
+	}
+	
+}

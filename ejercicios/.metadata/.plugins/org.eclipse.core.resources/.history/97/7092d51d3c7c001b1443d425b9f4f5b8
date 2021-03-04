@@ -1,0 +1,38 @@
+package ProyectoEmpresa;
+
+public class Cliente {
+ 
+
+
+	  static String nombreComercial;
+	  static int telefono;
+	  static int ImporteAcumulado;
+	  static Object PersonaContacto;
+	  static int NIF;
+	
+	
+	public  Cliente(int NIF, String nombreComercial, String Direccion, int telefono , String PersonaContcto, int ImporteAcumulado) {
+		
+		
+		this.NIF=NIF;
+		this.nombreComercial=nombreComercial;
+		this.telefono=telefono;
+		this.PersonaContacto=PersonaContacto;
+		this.ImporteAcumulado=ImporteAcumulado;
+	}
+	
+	
+	
+	public static void ConsultaCliente(String nombreComercial, int telefono) {
+		String info="Nombre:  "+nombreComercial+"\nTelefono: "+telefono;
+		
+		System.out.println(info);
+			
+	}
+	
+	
+	public static void ModificarCliente() {
+		
+	}
+	
+}

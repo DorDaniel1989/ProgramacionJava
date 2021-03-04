@@ -1,0 +1,111 @@
+package claseFile;
+
+import javax.swing.JOptionPane;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+public class ejercicio4 {
+
+	public static void main(String[]args) {
+
+		ArrayList<String> nombres = new ArrayList<String>();
+		ArrayList<String> nombresDecorados = new ArrayList<String>();
+		
+		
+	    int	numDeGuiones;	
+	    int tamañoArray;
+	
+		String guiones ="---------------------------------";
+		String Nombre="";
+		int tamanoNombre;
+		int tamanoNombreAnterior = 50;
+		
+		String dibujo;
+		String nombreAnterior;
+		int i =0;
+		
+		PrintWriter salida =null;
+		
+		try {
+		  salida= new PrintWriter ("C:/PruebasFile/nombres1.txt");
+		
+		do {
+		  nombres.add(JOptionPane.showInputDialog("Introduzca un nombre"));
+		  
+    	  if(nombres.contains("")) {
+			  break;
+		  }
+    	  
+    	  
+		  Nombre=nombres.get(i);	
+		  Nombre=Nombre.toUpperCase();
+		  tamanoNombre=Nombre.length();
+		  tamanoNombre=tamanoNombre*2;
+		  
+		  
+		  if(nombres.size()==1) {
+			  
+		     //System.out.println( dibujarGuiones(tamanoNombre));
+		     //salida.println(dibujarGuiones(tamanoNombre));}
+		  
+		  
+		  if(nombres.size()>1) {
+			  
+		     nombreAnterior=nombres.get(i-1);
+		     tamanoNombreAnterior=nombreAnterior.length();
+		  }
+		  
+		  if(Nombre.length() > tamanoNombreAnterior) {
+		
+			  System.out.println( dibujarGuiones(tamanoNombre));
+		      salida.println(dibujarGuiones(tamanoNombre)); 
+		  }
+		  else {
+			  if(nombres.size()>1 && (Nombre.length() > tamanoNombreAnterior)) {
+			  
+			  System.out.println( dibujarGuiones(tamanoNombreAnterior));
+		      salida.println(dibujarGuiones(tamanoNombre));}
+		  }
+		    dibujo=formarDibujo(Nombre);
+		  
+		    salida.println(dibujo);
+		    salida.println(dibujarGuiones(tamanoNombre));
+		  
+		    System.out.println(dibujo);
+		    System.out.println( dibujarGuiones(tamanoNombre));
+		  
+		    i++;
+		}while (!(nombres.contains("")));	
+	
+		salida.flush();
+		
+		}catch(IOException e) {
+			System.out.println("Ha ocurrido un error");
+			System.out.println(e.getMessage());
+		}
+	
+		
+	}
+	
+	
+	public static String formarDibujo(String nombre) {
+		String dibujo=""; 
+		
+		for(int i=0;i<nombre.length();i++) {
+		dibujo=dibujo +"|" + nombre.charAt(i);
+		}
+		dibujo=dibujo+"|";
+		return dibujo;
+	}
+	
+	public static String dibujarGuiones(int cantidad) {
+		String guiones ="---------------------------------";
+		String dibujoGuiones="";
+		dibujoGuiones=(guiones.substring(0,cantidad+1));
+		return dibujoGuiones;
+	}
+	
+	
+}

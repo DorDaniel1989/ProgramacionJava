@@ -1,0 +1,57 @@
+package claseFile;
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
+public class ejercicio3 {
+	
+    public static void main(String[]args) {
+	
+    	FileReader fr=null;
+		String ruta ="C:/PruebasFile/datos.txt";
+        boolean contiene;
+        
+        PrintWriter salidaArchivoIrun =null;
+        PrintWriter salidaRestoAlumnos =null;
+		try {
+			
+			fr =new FileReader(ruta);
+			@SuppressWarnings("resource")
+			BufferedReader entrada =new BufferedReader(fr);
+			salidaArchivoIrun= new PrintWriter ("C:/PruebasFile/alumnosIrun.txt");
+			salidaRestoAlumnos= new PrintWriter ("C:/PruebasFile/restoAlumnos.txt");
+			
+			String cadena =entrada.readLine();
+		   
+			while(cadena!=null) {
+		    	contiene=contieneIrun(cadena);
+			
+		        	if(contiene)
+			        	salidaArchivoIrun.println(cadena);
+		        	else
+			    	    salidaRestoAlumnos.println(cadena);
+		        	
+			    cadena=entrada.readLine();
+			}
+		 	salidaArchivoIrun.flush();
+		 	salidaRestoAlumnos.flush();
+		}
+	     catch(IOException e) {
+	    	 System.out.println("Error por algun lado");
+	     }
+	   
+}
+    
+    public static boolean contieneIrun(String cadena) {
+    	boolean contiene=false;
+    	     if(cadena.contains("Irun")) {
+    	    	 contiene =true;
+    	    	 return contiene ;}
+    	     else {
+    	    	 contiene=false;
+    	    	 return contiene;
+    	     }
+    	
+    }
+    
+}
