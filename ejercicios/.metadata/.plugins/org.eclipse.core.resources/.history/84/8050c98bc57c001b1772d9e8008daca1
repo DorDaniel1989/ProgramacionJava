@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.FileReader;
 
 
-public class operacionesMatematicasConFicheros {
+public class OperacionesMatematicasConFicheros {
 
 	@SuppressWarnings("resource")
 	public static void main(String[]args) throws IOException {
@@ -61,7 +61,6 @@ public class operacionesMatematicasConFicheros {
 	    resul=identificarAccion(cadenaR, resul);
 	    System.out.println(resul);
 	    
-	    System.out.println("Prueba");
 	    
 	}
 

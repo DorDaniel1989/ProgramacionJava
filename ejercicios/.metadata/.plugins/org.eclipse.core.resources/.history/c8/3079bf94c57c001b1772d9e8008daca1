@@ -61,7 +61,6 @@ public class operacionesMatematicasConFicheros {
 	    resul=identificarAccion(cadenaR, resul);
 	    System.out.println(resul);
 	    
-	    System.out.println("Prueba");
 	    
 	}
 
